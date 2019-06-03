@@ -713,50 +713,226 @@
 //	return 0;
 //}
 
-#include<iostream>
-using namespace std;
-int rev(int n)
-{
-	for (int i = 2; i < n; i++)
-	{
-		if (n%i == 0)
-			return 0;
-	}
-	return 1;
-}
-int main()
-{
-	int n = 0;
-	cin >> n;
+//#include<iostream>
+//using namespace std;
+//int rev(int n)
+//{
+//	for (int i = 2; i < n; i++)
+//	{
+//		if (n%i == 0)
+//			return 0;
+//	}
+//	return 1;
+//}
+//int main()
+//{
+//	int n = 0;
+//	cin >> n;
+//
+//	if ((n<0) || (n % 2 == 1))
+//		return 0;
+//	int count = 0;
+//	int min = n;
+//	int a = 0;
+//	int b = 0;
+//	int i = 1;
+//	int flag1 = 1;
+//	int flag2 = 1;
+//	while (i<n)
+//	{
+//		int j = n - i;
+//		count = j - i;
+//		
+//		if (count<0)
+//			break;
+//		flag1 = rev(i);
+//		flag2 = rev(j);
+//		if (flag1 && flag2 && min > count)
+//		{
+//			min = count;
+//			a = i;
+//			b = j;
+//		}
+//		i += 2;
+//	}
+//	cout << a << endl;
+//	cout << b << endl;
+//	system("pause");
+//	return 0;
+//}
 
-	if ((n<0) || (n % 2 == 1))
-		return 0;
-	int count = 0;
-	int min = n;
-	int a = 0;
-	int b = 0;
-	int i = 1;
-	int flag1 = 1;
-	int flag2 = 1;
-	while (i<n)
-	{
-		int j = n - i;
-		count = j - i;
-		
-		if (count<0)
-			break;
-		flag1 = rev(i);
-		flag2 = rev(j);
-		if (flag1 && flag2 && min > count)
-		{
-			min = count;
-			a = i;
-			b = j;
-		}
-		i += 2;
-	}
-	cout << a << endl;
-	cout << b << endl;
+//#include<iostream>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	//int n[][3] = { 1,2,3,4,5,6 };
+//	//int(*p)[3];
+//	//p = n;
+//	int a;
+//	float b, c;
+//	scanf("%2d%3f%4f", &a, &b, &c);
+//	printf("\na=%d, b=%f, c=%f\n", a, b, c);
+//	printf("\na=%d, b=%d, c=%f\n", a, b, c);
+//	printf("\na=%d, b=%f, c=%f\n", a, b, c);
+//
+//	system("pause");
+//	return 0;
+//}
+
+//#include<iostream>
+//
+//using namespace std;
+//
+//int gcd(int a, int b)
+//{
+//	int r;
+//	while (r = a % b)
+//	{
+//		a = b;
+//		b = r;
+//	}
+//	return b;
+//}
+//
+//int main()
+//{
+//	int a, b;
+//	while (cin >> a >> b)
+//	{
+//		cout << a * b / gcd(a, b) << endl;
+//	}
+//	return 0;
+//}
+
+//#include<iostream>
+//#include<vector>
+//
+//using namespace std;
+//
+//int g(int N, int M)
+//{
+//	vector<int> V;
+//	for (int i = 2; i<N; i++)
+//	{
+//		if (N%i == 0)
+//			V.push_back(i);
+//	}
+//	static int min = 10000;
+//	static int count = 0;
+//
+//	for (int i = 0; i<V.size(); i++)
+//	{
+//		int n = N;
+//		n += V[i];
+//		count++;
+//		if (n<M)
+//		{
+//			min = g(n, M);
+//		}
+//		else if (n == M)
+//		{
+//			if (min > count)
+//			{
+//				min = count;
+//			}
+//			count = 0;
+//			return min;
+//		}
+//		else
+//		{
+//			cout << -1;
+//			return -1;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int N, M;
+//	//cin >> N >> M;
+//	N = 4;
+//	M = 24;
+//	if (M <= N)
+//	{
+//		cout << -1;
+//		return 0;
+//	}
+//	int ret = g(N, M);
+//	cout << ret;
+//	system("pause");
+//	return 0;
+//}
+/////////////////////////////////////////////////////////////////////////6.3
+//6.3
+
+//#include<iostream>
+//#include<vector>
+//using namespace std;
+//int main()
+//{
+//	int year, month, day;
+//	cin >> year >> month >> day;
+//	if (year<1 || month<1 || month > 12)
+//		return -1;
+//	int day1[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };//ÈòÄê
+//	int day2[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+//	int days = 0;
+//	if (year % 400 == 0 || ((year % 100 != 0) && (year % 4 == 0)))//ÈòÄê
+//	{
+//		for (int i = 0; i<month - 1; i++)
+//		{
+//			days += day1[i];
+//		}
+//		if (day>day1[month - 1])
+//			return -1;
+//		days += day;
+//	}
+//	else
+//	{
+//		for (int i = 0; i<month - 1; i++)
+//		{
+//			days += day2[i];
+//		}
+//		if (day>day2[month - 1])
+//			return -1;
+//		days += day;
+//	}
+//	cout << days;
+//	system("pause");
+//	return 0;
+//}
+
+#include < iostream>
+#define SQR(A) A*A 
+using namespace std;
+struct st_task {
+	uint16_t id;
+	uint32_t value;
+	uint64_t timestamp;
+};
+void fool() 
+{
+	st_task task = {};
+	uint64_t a = 0x00010001;
+	memcpy(&task, &a, sizeof(uint64_t));
+	printf("%11u,%11u,%11u", task.id, task.value, task.timestamp);
+}
+void func(const int& v1, const int& v2)
+{ 
+	std::cout << v1 << ' ';
+	std::cout << v2 << ' ';
+}
+
+
+int main()
+{     
+	//int x=6,y=3,z=2;
+	//x/=(SQR(y + z) / SQR(y + z));
+	////cout<< x<< endl;
+	//fool();
+	int i = 0;
+	func(++i, i++);
 	system("pause");
 	return 0;
 }
