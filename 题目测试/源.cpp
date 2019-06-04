@@ -903,36 +903,72 @@
 //	return 0;
 //}
 
-#include < iostream>
-#define SQR(A) A*A 
+//#include < iostream>
+//#define SQR(A) A*A 
+//using namespace std;
+//struct st_task {
+//	uint16_t id;
+//	uint32_t value;
+//	uint64_t timestamp;
+//};
+//void fool() 
+//{
+//	st_task task = {};
+//	uint64_t a = 0x00010001;
+//	memcpy(&task, &a, sizeof(uint64_t));
+//	printf("%11u,%11u,%11u", task.id, task.value, task.timestamp);
+//}
+//void func(const int& v1, const int& v2)
+//{ 
+//	std::cout << v1 << ' ';
+//	std::cout << v2 << ' ';
+//}
+//
+//
+//int main()
+//{     
+//	//int x=6,y=3,z=2;
+//	//x/=(SQR(y + z) / SQR(y + z));
+//	////cout<< x<< endl;
+//	//fool();
+//	int i = 0;
+//	func(++i, i++);
+//	system("pause");
+//	return 0;
+//}
+
+////////////////////////////////////////////////////////////////////////////////6.4
+#include<iostream>
+
 using namespace std;
-struct st_task {
-	uint16_t id;
-	uint32_t value;
-	uint64_t timestamp;
-};
-void fool() 
-{
-	st_task task = {};
-	uint64_t a = 0x00010001;
-	memcpy(&task, &a, sizeof(uint64_t));
-	printf("%11u,%11u,%11u", task.id, task.value, task.timestamp);
-}
-void func(const int& v1, const int& v2)
-{ 
-	std::cout << v1 << ' ';
-	std::cout << v2 << ' ';
-}
-
-
 int main()
-{     
-	//int x=6,y=3,z=2;
-	//x/=(SQR(y + z) / SQR(y + z));
-	////cout<< x<< endl;
-	//fool();
-	int i = 0;
-	func(++i, i++);
+{
+	int n;
+	cin >> n;
+	int count = 0;
+	//if (n <0)
+	//{
+	//	n = -n;
+	//	count++;
+	//}
+	//while (n>0)
+	//{
+	//	int x = n % 2;
+	//	if (x == 1)
+	//		count++;
+	//	n /= 2;
+	//	//if (n == 1)
+	//	//	count++;
+	//}
+	int x = 1;
+	for (int i = 0; i < 32; i++)
+	{
+		int y = x & n;
+		if (y >= 1)
+			count++;
+		x = x<<1;
+	}
+	cout << count;
 	system("pause");
 	return 0;
 }

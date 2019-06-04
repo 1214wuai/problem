@@ -1,6 +1,2 @@
 ﻿  源.cpp
-d:\c\practice\题目测试\题目测试\源.cpp(919): warning C4477: “printf”: 格式字符串“%11u”需要类型“unsigned int”的参数，但可变参数 3 拥有了类型“uint64_t”
-  d:\c\practice\题目测试\题目测试\源.cpp(919): note: 请考虑在格式字符串中使用“%llu”
-  d:\c\practice\题目测试\题目测试\源.cpp(919): note: 请考虑在格式字符串中使用“%I64u”
-d:\c\practice\题目测试\题目测试\源.cpp(929): warning C4326: “main”的返回类型应为“int”而非“void”
   题目测试.vcxproj -> D:\c\practice\题目测试\Debug\题目测试.exe
