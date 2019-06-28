@@ -1,4 +1,11 @@
 #pragma warning(disable:4996)
+
+#include<iostream>
+#include<vector>
+#include<string>
+#include<map>
+#include<stack>
+#include<queue>
 //#include<iostream>
 //#include<string>
 //using namespace std;
@@ -1224,3 +1231,52 @@ int main()
 //	}
 //	return 0;
 //}
+class Solution {
+public:
+	bool hasPath(char* matrix, int rows, int cols, char* str)
+	{
+		if (matrix == nullptr || rows < 1 || cols < 1 || str == nullptr)
+			return false;
+		bool* visited = new bool[rows * cols];
+		for (int i = 0; i<rows*cols; i++)
+			visited[i] = false;
+
+		int PathLength = 0;
+		for (int row = 0; row < rows; row++)
+		{
+			for (int col = 0; col < cols; col++)
+			{
+				if (hashPathCore(matrix, rows, row, cols, col, PathLength, str, visited))
+					return true;
+			}
+		}
+		delete[] visited;
+		return false;
+	}
+
+	bool hashPathCore(const char* matrix, int rows, int row, int cols,
+		int col, int& PathLength, const char* str, bool* visited)
+	{
+		if (str[PathLength] == '\0')
+			return true;
+		bool hashpath = false;
+		if (row<0 || row >= rows || col<0 || col >= cols ||
+			matrix[row*cols + col] != str[PathLength] ||
+			visited[row*cols + col] == true)
+			return hashpath;
+		++PathLength;
+		visited[row*cols + col] = true;
+		hashpath = hashPathCore(matrix, rows, row - 1, cols, col, PathLength, str, visited) ||
+			hashPathCore(matrix, rows, row + 1, cols, col, PathLength, str, visited) ||
+			hashPathCore(matrix, rows, row, cols, col - 1, PathLength, str, visited) ||
+			hashPathCore(matrix, rows, row, cols, col + 1, PathLength, str, visited);
+		if (!hashpath)
+		{
+			--PathLength;
+			visited[row*cols + col] = false;
+		}
+		return hashpath;
+	}
+
+
+};
