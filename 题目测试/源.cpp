@@ -1,11 +1,6 @@
 #pragma warning(disable:4996)
 
-#include<iostream>
-#include<vector>
-#include<string>
-#include<map>
-#include<stack>
-#include<queue>
+
 //#include<iostream>
 //#include<string>
 //using namespace std;
@@ -1135,57 +1130,57 @@
 //	}
 //};
 //////////////////////////////////////////////////////////////////รินฌ
-#include<iostream>
-#include<vector>
-
-using namespace std;
-
-int n, m;
-vector<vector<int>> v;
-vector<vector<int>> path_tmp;
-vector<vector<int>> path_best;
-
-void Ma(int i, int j)
-{
-	v[i][j] = 1;
-	path_tmp.push_back({ i,j });
-	if (i == n - 1 && j == m - 1)
-		if (path_best.empty() || path_tmp.size() < path_best.size())
-			path_best = path_tmp;
-			
-	if (i - 1 >= 0 && v[i - 1][j] == 0)//shang
-		Ma(i - 1, j);
-	if (i + 1<n && v[i + 1][j] == 0)//xia
-		Ma(i + 1, j);
-	if (j - 1 >= 0 && v[i][j - 1] == 0)//zuo
-		Ma(i, j - 1);
-	if (j + 1 < m && v[i][j + 1] == 0)//shang
-		Ma(i, j + 1);
-	v[i][j] = 0;
-	path_tmp.pop_back();
-}
-int main()
-{
-	while(cin>>n>>m)
-	{
-	
-		v = vector<vector<int>>(n, vector<int>(m, 0));
-		path_best.clear();
-		path_tmp.clear();
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = 0; j < m; j++)
-				cin >> v[i][j];
-		}
-
-		Ma(0, 0);
-		for (auto e : path_best)
-		{
-			cout << '(' << e[0] << ',' << e[1] << ')' << endl;
-		}
-	}
-	return 0;
-}
+//#include<iostream>
+//#include<vector>
+//
+//using namespace std;
+//
+//int n, m;
+//vector<vector<int>> v;
+//vector<vector<int>> path_tmp;
+//vector<vector<int>> path_best;
+//
+//void Ma(int i, int j)
+//{
+//	v[i][j] = 1;
+//	path_tmp.push_back({ i,j });
+//	if (i == n - 1 && j == m - 1)
+//		if (path_best.empty() || path_tmp.size() < path_best.size())
+//			path_best = path_tmp;
+//			
+//	if (i - 1 >= 0 && v[i - 1][j] == 0)//shang
+//		Ma(i - 1, j);
+//	if (i + 1<n && v[i + 1][j] == 0)//xia
+//		Ma(i + 1, j);
+//	if (j - 1 >= 0 && v[i][j - 1] == 0)//zuo
+//		Ma(i, j - 1);
+//	if (j + 1 < m && v[i][j + 1] == 0)//shang
+//		Ma(i, j + 1);
+//	v[i][j] = 0;
+//	path_tmp.pop_back();
+//}
+//int main()
+//{
+//	while(cin>>n>>m)
+//	{
+//	
+//		v = vector<vector<int>>(n, vector<int>(m, 0));
+//		path_best.clear();
+//		path_tmp.clear();
+//		for (int i = 0; i < n; i++)
+//		{
+//			for (int j = 0; j < m; j++)
+//				cin >> v[i][j];
+//		}
+//
+//		Ma(0, 0);
+//		for (auto e : path_best)
+//		{
+//			cout << '(' << e[0] << ',' << e[1] << ')' << endl;
+//		}
+//	}
+//	return 0;
+//}
 
 //#include<iostream>
 //#include<vector>
@@ -1280,24 +1275,52 @@ int main()
 //
 //
 //};
-class Solution {
-public:
-	void reOrderArray(vector<int> &array) {
-		int sz = array.size();
-		vector<int> v1;
-		vector<int> v2;
-		for (int i = 0; i<sz; i++)
+//class Solution {
+//public:
+//	void reOrderArray(vector<int> &array) {
+//		int sz = array.size();
+//		vector<int> v1;
+//		vector<int> v2;
+//		for (int i = 0; i<sz; i++)
+//		{
+//			if (array[i] % 2 == 0)
+//				v2.push_back(array[i]);
+//			else
+//				v1.push_back(array[i]);
+//		}
+//		int sz1 = v1.size();
+//		for (int i = 0; i<sz1; i++)
+//			array[i] = v1[i];
+//		int sz2 = v2.size();
+//		for (int i = 0; i<sz2; i++)
+//			array[i + sz1] = v2[i];
+//	}
+//};
+
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	while (cin >> n)
+	{
+		int count = 0;
+	s:
+		while (n >= 10)
 		{
-			if (array[i] % 2 == 0)
-				v2.push_back(array[i]);
-			else
-				v1.push_back(array[i]);
+			count += n % 10;
+			n /= 10;
 		}
-		int sz1 = v1.size();
-		for (int i = 0; i<sz1; i++)
-			array[i] = v1[i];
-		int sz2 = v2.size();
-		for (int i = 0; i<sz2; i++)
-			array[i + sz1] = v2[i];
+		count += n;
+		if (count >= 10)
+		{
+			n = count;
+			count = 0;
+			goto s;
+		}
+		cout << count << endl;
 	}
-};
+	return 0;
+}
